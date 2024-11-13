@@ -6,7 +6,7 @@ const MainImage: React.FC<{ url: string | null }> = ({ url }) => {
   return (
     <>
       {url && (
-        <div className="relative w-96 h-96">
+        <div className="relative w-[700px] h-[700px]">
           <Image src={url} objectFit="contain" layout="fill" alt="main image" />
         </div>
       )}
