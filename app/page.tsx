@@ -64,51 +64,51 @@ export default function Home() {
   };
 
   return (
-    <div className="flex gap-8 justify-center mt-8">
-      <div className="flex gap-4">
-        <div className="flex flex-col gap-4">
-          {product.options[activeOption].image_urls.map(
-            (url, index: number) => {
-              return (
-                <ImageThumbnail
-                  key={index}
-                  url={url}
-                  handleImageSelect={() => handleImageSelect(url)}
-                />
-              );
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex flex-col lg:flex-row gap-8 mt-8">
+        <div className="flex flex-col-reverse lg:flex-row gap-4 w-full lg:w-2/3">
+          <div className="flex lg:flex-col gap-2 justify-center">
+            {product.options[activeOption].image_urls.map(
+              (url, index: number) => {
+                return (
+                  <ImageThumbnail
+                    key={index}
+                    url={url}
+                    handleImageSelect={() => handleImageSelect(url)}
+                  />
+                );
+              }
+            )}
+          </div>
+          <div className="flex-grow">
+            <MainImage url={mainUrl}></MainImage>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/3 space-y-6">
+          <ProductInfor
+            title={product.title}
+            detail={product.detail}
+            price={product.options[activeOption].price}
+          ></ProductInfor>
+          <div className="">
+            <ProductType
+              type={product.type}
+              type_values={product.options.map((option) => {
+                return option.type_value;
+              })}
+              handleTypeChange={handleTypeChange}
+              activeOption={activeOption}
+            ></ProductType>
+          </div>
+          <button
+            className="w-full p-4 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition"
+            onClick={() =>
+              alert(`Added ${product.options[activeOption].type_value} to bag`)
             }
-          )}
+          >
+            Add to Bag
+          </button>
         </div>
-        <div className="">
-          <MainImage url={mainUrl}></MainImage>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-4 w-full md:w-1/2 lg:w-1/3">
-        <ProductInfor
-          title={product.title}
-          detail={product.detail}
-          price={product.options[activeOption].price}
-        ></ProductInfor>
-        <div className="">
-          <ProductType
-            type={product.type}
-            type_values={product.options.map((option) => {
-              return option.type_value;
-            })}
-            handleTypeChange={handleTypeChange}
-            activeOption={activeOption}
-          ></ProductType>
-        </div>
-
-        <button
-          className="mt-4 p-3 w-full bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 transition"
-          onClick={() =>
-            alert(`Added ${product.options[activeOption].type_value} to bag`)
-          }
-        >
-          Add to Bag
-        </button>
       </div>
     </div>
   );

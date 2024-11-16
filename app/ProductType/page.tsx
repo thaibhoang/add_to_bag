@@ -15,15 +15,15 @@ const ProductType: React.FC<ProductTypeProps> = ({
 }) => {
   return (
     <>
-      <div className="">
-        <div className="font-bold text-xl">{type}</div>
-        <div className="flex gap-2">
+      <div className="space-y-3">
+        <div className="font-bold text-lg md:text-xl capitalize">{type}</div>
+        <div className="flex flex-wrap gap-2">
           {type_values.map((type_value, index) => {
             const active = activeOption == index;
             return (
               <div
-                className={`cursor-pointer p-2 rounded-md ${
-                  active ? "text-white bg-slate-800" : ""
+                className={`cursor-pointer p-2 rounded-md text-sm md:text-base ${
+                  active ? "text-white bg-slate-800" : "bg-gray-200"
                 }`}
                 key={index}
                 onClick={() => handleTypeChange(index)}

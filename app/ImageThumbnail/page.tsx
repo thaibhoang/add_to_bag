@@ -7,13 +7,12 @@ const ImageThumbnail: React.FC<{
   handleImageSelect: () => void;
 }> = ({ url, handleImageSelect }) => {
   return (
-    <div className="relative w-20 h-24">
+    <div className="relative w-16 h-16 md:w-20 md:h-20">
       <Image
         src={url}
         layout="fill"
         alt="image thumbnail"
-        objectFit="contain"
-        className="hover:cursor-pointer"
+        className="object-contain hover:cursor-pointer"
         onClick={handleImageSelect}
       />
     </div>

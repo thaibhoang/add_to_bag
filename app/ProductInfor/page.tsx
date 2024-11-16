@@ -9,9 +9,11 @@ interface ProductInforProp {
 const ProductInfor: React.FC<ProductInforProp> = ({ title, detail, price }) => {
   return (
     <>
-      <div className="font-bold text-2xl">{title}</div>
-      <div className="text-gray-500">{detail}</div>
-      <div className="font-bold text-2xl">${price}</div>
+      <div className="space-y-4">
+        <h1 className="font-bold text-xl md:text-2xl">{title}</h1>
+        <p className="text-gray-500 text-sm md:text-base">{detail}</p>
+        <div className="font-bold text-xl md:text-2xl">${price}</div>
+      </div>
     </>
   );
 };
